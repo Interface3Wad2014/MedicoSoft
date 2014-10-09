@@ -60,3 +60,62 @@ h2{
 .bs-example{
 	margin: 20px;
 }
+
+.fiche
+{
+    margin-top:60px;
+}
+.panel-heading
+{
+    width:200px;
+    border:1px solid #ccc;
+     border-bottom:0px;
+     text-align:center;
+     font-size:18px;
+    margin-top:-38px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.panel-default > .panel-heading
+{
+    background-color:white;
+}
+
+.panel-body p
+{
+    margin-left:200px;
+}
+
+.circular {
+	width: 176px;
+	height: 176px;
+	border-radius: 176px;
+	-webkit-border-radius: 176px;
+	-moz-border-radius: 176px;
+	background: url(../Assets/images/avatar.png) repeat;
+    float:left;
+	}
+
+.folder
+{
+    background: url(../Assets/images/dossier.png) no-repeat;
+    background-position:center;
+    float:left;
+    width:200px;
+    height:200px;
+    vertical-align:middle;
+    text-align:center;
+    font-family: Aparajita;
+    display:block;
+    font-size:25px;
+}
+
+
+.btnlogin
+{
+    margin-top:10px;
+    position: absolute;
+    right:0px;
+    margin-right:10px;
+}
