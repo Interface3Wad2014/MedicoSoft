@@ -1,0 +1,17 @@
+﻿@model DAL.Utilisateur
+
+@{
+    ViewBag.Title = "Forms";
+}
+
+<div class="panel panel-default" style="margin-top:100px;">
+    <div class="panel-heading">Connectez-vous</div>
+    <div class="panel-body">
+        <form method="post" action="/Login/Forms">
+            <p>Login: <input type="text" name="txtLogin" /></p>
+            <p>Password: <input type="Password" name="txtPassword" /></p>
+            <button>Go</button>
+        </form>
+    </div>
+</div>
+
