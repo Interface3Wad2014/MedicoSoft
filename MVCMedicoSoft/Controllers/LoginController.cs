@@ -1,4 +1,5 @@
 ﻿using DAL;
+using MVCMedicoSoft.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,8 @@ namespace MVCMedicoSoft.Controllers
             else
             {
                 //1 - stocker en session le login de l'utilisateur
-                Session["login"] = U.Login;
+                MySession.Login = U.Login;
+                MySession.User = U;
                 //2 - rediriger vers Home/Index
                 //return View();
                 return RedirectToRoute(
@@ -39,8 +41,9 @@ namespace MVCMedicoSoft.Controllers
 	
         [HttpGet]
         public RedirectToRouteResult LogOut()
+
         {
-            Session["login"] = null;
+            MySession.Login = null;
             Session.Abandon();
 
             return RedirectToRoute

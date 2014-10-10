@@ -18,7 +18,7 @@
             <div class="navbar-collapse collapse">
               
                     
-                @if (Session["login"]==null)
+                @if (MVCMedicoSoft.Models.MySession.Login==null)
                 { 
                     <a href="/Login/Forms" 
                        class="btn btn-primary btnlogin" >
@@ -28,7 +28,7 @@
                 {
                     <a href="/Login/LogOut" 
                        class="btn btn-primary btnlogin" >
-                       Bienvenue @Session["login"]
+                       Bienvenue @MVCMedicoSoft.Models.MySession.Login
                     </a>
                 }
                     
