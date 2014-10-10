@@ -9,8 +9,18 @@ namespace MVCMedicoSoft.Models
     public static class MySession
     {
         public static string Login
-        { 
-           get{ return HttpContext.Current.Session["Login"].ToString();}
+        {
+            get
+            {
+                try
+                {
+                    return HttpContext.Current.Session["Login"].ToString();
+                }
+                catch 
+                {
+                    return null;
+                }
+            }
             set { HttpContext.Current.Session["Login"] = value; }
         }
 
