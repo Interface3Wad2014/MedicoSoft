@@ -332,6 +332,21 @@ namespace DAL
                 return TypeOfUser.Patient;
 
             }
+
+            public Medecin ConvertMedecin()
+            {
+                if (Medecin.Exists(this))
+                {
+                    Medecin me = Medecin.getInfoFromUser(this.IdUtilisateur);
+                    return me;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+
         #endregion
 
         

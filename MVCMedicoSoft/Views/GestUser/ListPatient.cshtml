@@ -1,20 +1,13 @@
-﻿@model IEnumerable<DAL.Utilisateur>
+﻿@model IEnumerable<DAL.Personne>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ListPatient";
 }
 
-<h2>Index</h2>
+<h2>ListPatient</h2>
 
 <p>
-    @*@Html.ActionLink("Create New", "Create")*@
-
-    @if(MVCMedicoSoft.Models.MySession.isMedecin)
-    {
-        <a href="/GestUser/ListPatient" class="btn btn-danger" >
-            Vos patients
-        </a>
-    }
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -54,22 +47,7 @@
         <th>
             @Html.DisplayNameFor(model => model.TelMobile)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdUtilisateur)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Login)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActif)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateCreation)
-        </th>
-        @*<th></th>*@
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -111,25 +89,10 @@
             @Html.DisplayFor(modelItem => item.TelMobile)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.IdUtilisateur)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Login)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsActif)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreation)
-        </td>
-        @*<td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>*@
+        </td>
     </tr>
 }
 

@@ -44,6 +44,23 @@ namespace DAL
         }
 
         /// <summary>
+        ///  Permet de récupérer le medeci de la DB via son numéro d'utilisateur
+        /// </summary>
+        /// <param name="FkIdUser">Identifiant utilisateur</param>
+        /// <returns>Le medecin correspondant ou un medecin vide</returns>
+        public static Medecin getInfoFromUser(int FkIdUser)
+        {
+            List<Dictionary<string, object>> infoUser = GestionConnexion.Instance.getData("Select * from Medecin where FKIdUtilisateur=" + FkIdUser);
+            Medecin retour = new Medecin();
+            foreach (Dictionary<string, object> item in infoUser)
+            {
+                Utilisateur.getInfo(item["FKIdUtilisateur"].ToString(), retour as Utilisateur);
+                retour.INAMI = item["INAMI"].ToString();
+            }
+            return retour;
+        }
+
+        /// <summary>
         /// Permet de sauvegarder le medecin dans la DB
         /// <seealso cref="Utilisateur.saveMe"/>
         /// </summary>
@@ -91,9 +108,6 @@ namespace DAL
                 return false;
             }
         }
-
-
-
         /// <summary>
         /// Permet de vérifier si un utilisateur correspond a un Medecin
         /// </summary>
@@ -103,8 +117,42 @@ namespace DAL
         {
             List<Dictionary<string, object>> infoUser = GestionConnexion.Instance.getData("Select * from Medecin where FKIdUtilisateur=" + u.IdUtilisateur);
 
+            //3 syntaxes différentes pour le même effet
+            
+            //1- avec le if
+            //if (infoUser.Count > 0)
+            //    return true;
+            //else
+            //    return false;
+            
+            //2- avec l'opérateur ternaire            
+            //return infoUser.Count > 0 ? true : false;
+            
+            //3- en mode feignasse
             return infoUser.Count > 0;
-        } 
+        }
+        /// <summary>
+        /// Permet de récupérer la liste des patients du Medecin courant
+        /// </summary>
+        /// <returns>la liste des patients du Medecin courant</returns>
+        public List<Personne> MesPatients() 
+        {
+            string requete = "select * from Patient where FkINAMI=" + this.INAMI;
+            List<Dictionary<string, object>> lp = GestionConnexion.Instance.getData(requete);
+            List<Personne> maListe= new List<Personne>();
+            foreach (var item in lp)
+            {
+                //Récupérer la valeur dans le dico
+                string verifNum = item["FknumRegNational"].ToString();
+                //Récupérer la personne correspondante
+                Personne p = Personne.getInfo(verifNum);
+                //Ajout dans la liste de retour(liste de personne)
+                maListe.Add(p);
+            }
+            return maListe;
+        }
+        
+        
         #endregion
     }
 }
