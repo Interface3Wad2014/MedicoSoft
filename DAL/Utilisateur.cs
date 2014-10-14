@@ -320,6 +320,10 @@ namespace DAL
                 return retour;
             }
 
+            /// <summary>
+            /// Permet de savoir si l'utilisateur est medecin ou secretaire ou Patient
+            /// </summary>
+            /// <returns>retourne le type d'utilisateur</returns>
             public TypeOfUser getRole()
             {
                 //vérification si c'est un medecin

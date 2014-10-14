@@ -1,0 +1,134 @@
+﻿@model IEnumerable<DAL.Utilisateur>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+
+    @if(MVCMedicoSoft.Models.MySession.isMedecin)
+    {
+        
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumRegNational)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateNaissance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodePostal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ville)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdresseMail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelFixe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelMobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdUtilisateur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreation)
+        </th>
+        @*<th></th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumRegNational)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prenom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateNaissance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adresse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodePostal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ville)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdresseMail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelFixe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelMobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdUtilisateur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActif)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCreation)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    </tr>
+}
+
+</table>
