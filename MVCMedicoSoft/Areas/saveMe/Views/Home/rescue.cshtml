@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="alert-success" style="font-size:16px; font-weight:bold;margin-top:100px;">
+
+    <center>
+        @{
+            if (ViewBag.step == 1)
+            {
+                Html.RenderPartial("_geoloc");
+            }
+            else
+            {
+                Html.RenderPartial("_google");
+            }
+        }
+    </center>
+</div>
