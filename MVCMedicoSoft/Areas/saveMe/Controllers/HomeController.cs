@@ -24,7 +24,7 @@ namespace MVCMedicoSoft.Areas.saveMe.Controllers
             string NomMedecin = "";
             if(p !=null)
             { 
-                if (p.getReferent(out NomMedecin) != null)
+                if (p.getReferent(out NomMedecin))
                 {
                     return View("rescue", p);
                 }
