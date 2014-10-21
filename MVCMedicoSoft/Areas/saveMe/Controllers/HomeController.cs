@@ -19,7 +19,7 @@ namespace MVCMedicoSoft.Areas.saveMe.Controllers
         [HttpPost]
         public ActionResult Index(string txtregnat)
         {
-            ViewBag.step = 3;
+            ViewBag.step = 1;
             Personne p = Personne.getInfo(txtregnat);
             string NomMedecin = "";
             if(p !=null)

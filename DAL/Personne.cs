@@ -346,7 +346,7 @@ FROM         Medecin INNER JOIN
                       Personne ON Patient.FknumRegNational = Personne.numRegNational
                       where numRegNational=" + this.NumRegNational + ")");
 
-            if (ret.Count > 0) NomMedecin = ret[0][Nom].ToString();
+            if (ret.Count > 0) NomMedecin = ret[0]["Nom"].ToString();
             else NomMedecin = default(string);
               return ret.Count > 0;
 

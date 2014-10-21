@@ -60,7 +60,7 @@
                 var distance = result.routes[0].legs[0].distance.text;
                 var duree = result.routes[0].legs[0].duration.text;
                 alert("Nous arrivons dans " + duree);
-                document.getElementById("InfoDuree").innerHTML = "Nous arrivons dans " + duree;
+                document.getElementById("InfoDuree").innerHTML = "Nous arrivons dans " + duree + " ("+ distance +")";
 
             }
         });
