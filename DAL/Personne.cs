@@ -333,10 +333,31 @@ namespace DAL
                   return false;
               }
           }
+
+          public bool getReferent(out string NomMedecin)
+          {
+            List<Dictionary<string, object>> ret =  GestionConnexion.Instance.getData(@"SELECT  'Dr.' +  Personne.nom as Nom
+FROM         Medecin INNER JOIN
+                      Utilisateur ON Medecin.FKIdUtilisateur = Utilisateur.idUtilisateur INNER JOIN
+                      Personne ON Utilisateur.FkRegistreNational = Personne.numRegNational
+where Medecin.INAMI=(SELECT     Medecin.INAMI
+FROM         Medecin INNER JOIN
+                      Patient ON Medecin.INAMI = Patient.FkINAMI INNER JOIN
+                      Personne ON Patient.FknumRegNational = Personne.numRegNational
+                      where numRegNational=" + this.NumRegNational + ")");
+
+            if (ret.Count > 0) NomMedecin = ret[0][Nom].ToString();
+            else NomMedecin = default(string);
+              return ret.Count > 0;
+
+
+          }
         #endregion
 
 
 
 
+
+          
     }
 }

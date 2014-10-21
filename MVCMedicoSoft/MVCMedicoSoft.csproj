@@ -137,6 +137,7 @@
     <Content Include="Assets\images\dossier.png" />
     <Content Include="Assets\images\medicosoft.png" />
     <Content Include="Assets\images\rescueme.png" />
+    <Content Include="Assets\images\skull.jpg" />
     <Content Include="Assets\images\slide2.png" />
     <Content Include="Assets\images\slide3.png" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -157,6 +158,8 @@
     <Content Include="Areas\saveMe\Views\Shared\_geoloc.cshtml" />
     <Content Include="Areas\saveMe\Views\Home\rescue.cshtml" />
     <Content Include="Areas\saveMe\Views\Home\Index.cshtml" />
+    <Content Include="Areas\saveMe\Views\Shared\_geoLocGoogleItineraire.cshtml" />
+    <Content Include="Areas\saveMe\Views\Home\Death.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

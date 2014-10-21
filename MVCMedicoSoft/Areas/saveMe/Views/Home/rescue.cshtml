@@ -16,9 +16,13 @@
             {
                 Html.RenderPartial("_geoloc");
             }
-            else
+            if(ViewBag.step==2)
             {
                 Html.RenderPartial("_google");
+            }
+            else
+            {
+                Html.RenderPartial("_geoLocGoogleItineraire");
             }
         }
     </center>

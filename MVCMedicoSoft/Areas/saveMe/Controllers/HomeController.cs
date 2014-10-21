@@ -21,7 +21,22 @@ namespace MVCMedicoSoft.Areas.saveMe.Controllers
         {
             ViewBag.step = 3;
             Personne p = Personne.getInfo(txtregnat);
-            return View("rescue", p);
+            string NomMedecin = "";
+            if(p !=null)
+            { 
+                if (p.getReferent(out NomMedecin) != null)
+                {
+                    return View("rescue", p);
+                }
+                else
+                {
+                    return View("Death", p);
+                }
+            }
+            else
+            {
+                return View("Death", p);
+            }
         }
 	}
 }
