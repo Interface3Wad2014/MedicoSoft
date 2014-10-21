@@ -344,7 +344,7 @@ where Medecin.INAMI=(SELECT     Medecin.INAMI
 FROM         Medecin INNER JOIN
                       Patient ON Medecin.INAMI = Patient.FkINAMI INNER JOIN
                       Personne ON Patient.FknumRegNational = Personne.numRegNational
-                      where numRegNational=" + this.NumRegNational + ")");
+                      where isReferent=1 and numRegNational=" + this.NumRegNational + ")");
 
             if (ret.Count > 0) NomMedecin = ret[0]["Nom"].ToString();
             else NomMedecin = default(string);
