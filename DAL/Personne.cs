@@ -266,7 +266,42 @@ namespace DAL
 
               return null;
           }
-       
+
+        /// <summary>
+        /// Permet de récupérer toutes les personnes de la DB
+        /// </summary>
+        /// <returns>La liste des personnes de la DB</returns>
+          public static List<Personne> getInfos()
+          {
+              List<Dictionary<string, object>> infosPatientsQuiSontDesPersonnesOuPas
+                  = GestionConnexion.Instance.getData("select * from Personne");
+
+              List<Personne> listReturn = new List<Personne>();
+
+              foreach (Dictionary<string,object> oDr in infosPatientsQuiSontDesPersonnesOuPas)
+              {
+                  Personne p = new Personne();
+                  p.NumRegNational = oDr["numRegNational"].ToString();
+                  // ou p.NumRegNational = oDr.GetString(0);  
+                  // ou p.NumRegNational= oDr[0].ToString();
+                  p.Nom = oDr["nom"].ToString();
+                  p.Prenom = oDr["prenom"].ToString();
+                  p.DateNaissance = DateTime.Parse(oDr["dateNaissance"].ToString());
+                  p.Sexe = oDr["sexe"].ToString()[0];
+                  p.Adresse = oDr["adresse"].ToString();
+                  if (oDr["codePostal"].ToString() != "") p.CodePostal = int.Parse(oDr["codePostal"].ToString());
+
+                  p.Ville = oDr["ville"].ToString();
+                  p.AdresseMail = oDr["adresseMail"].ToString();
+                  p.Pays = oDr["pays"].ToString();
+                  p.TelFixe = oDr["telFixe"].ToString();
+                  p.TelMobile = oDr["telMobile"].ToString();
+
+                  listReturn.Add(p);
+              }
+              return listReturn;
+
+          }
         #endregion
         #region Functions
           /// <summary>
@@ -356,8 +391,6 @@ FROM         Medecin INNER JOIN
 
 
 
-
-
-          
+       
     }
 }

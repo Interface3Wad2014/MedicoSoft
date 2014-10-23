@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcJqGrid">
+      <HintPath>..\packages\MvcJqGrid.1.0.15\lib\net40\MvcJqGrid.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -110,6 +113,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Agenda\Models\" />
     <Folder Include="Areas\saveMe\Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +122,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Agenda\AgendaAreaRegistration.cs" />
+    <Compile Include="Areas\Agenda\Controllers\HomeController.cs" />
     <Compile Include="Areas\saveMe\Controllers\HomeController.cs" />
     <Compile Include="Areas\saveMe\saveMeAreaRegistration.cs" />
     <Compile Include="Controllers\GestUserController.cs" />
@@ -160,6 +166,11 @@
     <Content Include="Areas\saveMe\Views\Home\Index.cshtml" />
     <Content Include="Areas\saveMe\Views\Shared\_geoLocGoogleItineraire.cshtml" />
     <Content Include="Areas\saveMe\Views\Home\Death.cshtml" />
+    <Content Include="Areas\Agenda\Views\web.config" />
+    <Content Include="Areas\Agenda\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Agenda\Views\Shared\_AddRdv.cshtml" />
+    <Content Include="Areas\Agenda\Views\Shared\_layoutAgenda.cshtml" />
+    <Content Include="Areas\Agenda\Views\Shared\_ListPatient.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
