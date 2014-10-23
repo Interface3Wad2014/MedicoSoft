@@ -1,4 +1,5 @@
 ﻿using DAL;
+using MVCMedicoSoft.Areas.Agenda.Models;
 using MVCMedicoSoft.Models;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,10 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
             {
                 if(MySession.User.getRole()== DAL.TypeOfUser.Secretaire)
                 {
-                     MySession.LesPatients = Personne.getInfos();
-                     return View(MySession.LesPatients);
+                    MySession.LesPatientsEtLesMedecins = new Models.BoiteMedecinEtPersonne();
+
+                    MySession.LesPatientsEtLesMedecins.LstPers = Personne.getInfos();
+                    return View(MySession.LesPatientsEtLesMedecins);
                 }
                 else
                 {
@@ -39,7 +42,7 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
         {
             //lp[i].Nom == txtSearchName???
             List<Personne> listeFiltre = new List<Personne>();
-            foreach (var item in MySession.LesPatients)
+            foreach (var item in MySession.LesPatientsEtLesMedecins.LstPers)
             {
                 if (item.Nom.ToUpper().Contains(txtSearchName.ToUpper())
                     ||
@@ -48,7 +51,11 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
                     listeFiltre.Add(item);
             }
 
-            return View(listeFiltre);
+            BoiteMedecinEtPersonne newBoite = new BoiteMedecinEtPersonne();
+            newBoite.LstPers = listeFiltre;
+            newBoite.LstMed = MySession.LesPatientsEtLesMedecins.LstMed;
+
+            return View(newBoite);
         }
     
     }

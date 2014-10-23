@@ -1,4 +1,5 @@
 ﻿using DAL;
+using MVCMedicoSoft.Areas.Agenda.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,11 +37,11 @@ namespace MVCMedicoSoft.Models
             get { return (bool)HttpContext.Current.Session["isMedecin"]; }
             set { HttpContext.Current.Session["isMedecin"] = value; }
         }
-     
-         public static List<Personne> LesPatients
+
+        public static BoiteMedecinEtPersonne LesPatientsEtLesMedecins
         {
-            get { return (List<Personne>)HttpContext.Current.Session["lstPat"]; }
-            set { HttpContext.Current.Session["lstPat"] = value; }
+            get { return (BoiteMedecinEtPersonne)HttpContext.Current.Session["lstPatMed"]; }
+            set { HttpContext.Current.Session["lstPatMed"] = value; }
         }
 
     }

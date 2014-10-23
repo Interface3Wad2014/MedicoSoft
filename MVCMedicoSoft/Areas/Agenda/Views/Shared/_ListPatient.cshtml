@@ -1,0 +1,103 @@
+﻿@model IEnumerable<DAL.Personne>
+<h3>Choisir un patient</h3>
+<table class="table">
+    <tr>
+        <th>
+            <form method="post">
+                Nom :<input type="text" name="txtSearchName" /><br />
+                Date naissance : <input type="date" name="dtNaiss" />
+                <button>Cherche!!! Bon chien.</button>
+            </form>
+        </th>
+        <table class="table">
+            <tr>
+
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumRegNational)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Prenom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateNaissance)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sexe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adresse)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodePostal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ville)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AdresseMail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pays)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelFixe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelMobile)
+                </th>
+                
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <input type="radio" 
+                        value="@Html.DisplayFor(modelItem=>item.NumRegNational)"
+                        name="rdPatientSel" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumRegNational)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prenom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateNaissance)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sexe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adresse)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodePostal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ville)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AdresseMail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pays)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelFixe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelMobile)
+                    </td>
+                    
+                </tr>
+            }
+
+        </table>
