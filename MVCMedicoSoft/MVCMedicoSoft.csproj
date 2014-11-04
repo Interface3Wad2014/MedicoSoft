@@ -166,11 +166,11 @@
     <Content Include="Areas\saveMe\Views\Home\Index.cshtml" />
     <Content Include="Areas\saveMe\Views\Shared\_geoLocGoogleItineraire.cshtml" />
     <Content Include="Areas\saveMe\Views\Home\Death.cshtml" />
-    <Content Include="Areas\Agenda\Views\web.config" />
-    <Content Include="Areas\Agenda\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Agenda\Views\Shared\_AddRdv.cshtml" />
     <Content Include="Areas\Agenda\Views\Shared\_layoutAgenda.cshtml" />
     <Content Include="Areas\Agenda\Views\Shared\_ListPatient.cshtml" />
+    <Content Include="Areas\Agenda\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Agenda\Views\Shared\_AddRdv.cshtml" />
+    <Content Include="Areas\Agenda\Views\web.config" />
     <Content Include="Areas\Agenda\Views\Shared\_ListMedecin.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

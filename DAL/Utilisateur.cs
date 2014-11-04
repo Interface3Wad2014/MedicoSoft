@@ -166,7 +166,7 @@ namespace DAL
             /// <param name="idUser">identifiant de l'utilisateur</param>
             /// <param name="u">L'utilisateur a remplir</param>
             /// <returns>un utilisateur complet si l'utilisateur </returns>
-            public static Utilisateur getInfo(int idUser, Utilisateur u=null)
+        public static Utilisateur getInfoFromId(int idUser, Utilisateur u = null)
             {
                List<Dictionary<string, object>> infoUser = GestionConnexion.Instance.getData("Select * from Utilisateur where idUtilisateur=" + idUser);
                u=u?? new Utilisateur();
@@ -315,7 +315,7 @@ namespace DAL
                 if (infoUser.Count > 0)
                 {
                     int iduser = (int)infoUser[0]["idUtilisateur"];
-                    retour = Utilisateur.getInfo(iduser);
+                    retour = Utilisateur.getInfoFromId(iduser);
                 }
                 return retour;
             }

@@ -27,6 +27,7 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
                     MySession.LesPatientsEtLesMedecins = new Models.BoiteMedecinEtPersonne();
 
                     MySession.LesPatientsEtLesMedecins.LstPers = Personne.getInfos();
+                    MySession.LesPatientsEtLesMedecins.LstMed = Medecin.getInfos();
                     return View(MySession.LesPatientsEtLesMedecins);
                 }
                 else

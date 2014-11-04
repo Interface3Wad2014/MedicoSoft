@@ -37,10 +37,27 @@ namespace DAL
             Medecin retour = new Medecin();
             foreach (Dictionary<string, object> item in infoUser)
             {
-                Utilisateur.getInfo(item["FKIdUtilisateur"].ToString(), retour as Utilisateur);
+                Utilisateur.getInfoFromId(int.Parse(item["FKIdUtilisateur"].ToString()), retour as Utilisateur);
                 retour.INAMI = Inami;
             }
             return retour;
+        }
+
+        /// <summary>
+        /// Permet de récupérer la liste des medecins 
+        /// </summary>
+        /// <returns>La liste des medecins</returns>
+        public static List<Medecin> getInfos()
+        {
+            List<Dictionary<string, object>> infoMedecin = 
+                GestionConnexion.Instance.getData("Select INAMI from Medecin ");
+            List<Medecin> lstRetour = new List<Medecin>();
+            foreach (Dictionary<string, object> item in infoMedecin)
+            {
+                Medecin me = Medecin.getInfo(item["INAMI"].ToString());
+                lstRetour.Add(me);
+            }
+            return lstRetour;
         }
 
         /// <summary>
