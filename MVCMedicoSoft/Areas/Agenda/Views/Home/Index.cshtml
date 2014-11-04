@@ -1,0 +1,11 @@
+﻿@model MVCMedicoSoft.Areas.Agenda.Models.BoiteMedecinEtPersonne
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Agenda/Views/Shared/_LayoutAgenda.cshtml";
+}
+
+<h2>Index</h2>
+@{
+    Html.RenderPartial("_ListPatient", Model.LstPers);
+    Html.RenderPartial("_ListMedecin", Model.LstMed);
+}
