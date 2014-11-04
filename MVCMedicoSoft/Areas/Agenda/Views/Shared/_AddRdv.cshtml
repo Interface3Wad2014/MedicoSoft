@@ -1,0 +1,39 @@
+﻿
+<h1>Ajouter un Rendez-Vous</h1>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var mydata = [
+        { Country: "Germany", "Capital": "Berlin" },
+        { Country: "France", "Capital": "Paris" },
+        { Country: "Italy", "Capital": "Rome" },
+        { Country: "Spain", "Capital": "Madrid" },
+        { Country: "England", "Capital": "London" }
+        ];
+
+        $("#grid").jqGrid({ //set your grid id
+            data: mydata, //insert data from the data object we created above
+            datatype: 'local',
+            width: 500, //specify width; optional
+            colNames: ['Id', 'Name'], //define column names
+            colModel: [
+            { name: 'Country', index: 'Country', key: true, width: 50 },
+            { name: 'Capital', index: 'Capital', width: 100 }
+            ], //define column models
+            pager: '#pager', //set your pager div id
+            sortname: 'Country', //the column according to which data is to be sorted; optional
+            viewrecords: true, //if true, displays the total number of records, etc. as: "View X to Y out of Z” optional
+            sortorder: "asc", //sort order; optional
+            caption: "jqGrid Example" //title of grid
+        });
+
+
+    });
+
+
+</script>
+
+<table id="grid"></table>
+
+<div id="pager"></div>
