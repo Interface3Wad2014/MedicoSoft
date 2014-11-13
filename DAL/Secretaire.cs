@@ -130,7 +130,27 @@ namespace DAL
             List<Dictionary<string, object>> infoUser = GestionConnexion.Instance.getData("Select * from Secretaire where FKidUtilisateur=" + u.IdUtilisateur);
 
             return infoUser.Count > 0;
-        } 
+        }
+
+
+        /// <summary>
+        ///  Permet de récupérer la secrétaire de la DB via son numéro d'utilisateur
+        /// </summary>
+        /// <param name="FkIdUser">Identifiant utilisateur</param>
+        /// <returns>La secretaire correspondant ou un secretaire vide</returns>
+        public static Secretaire getInfoFromUser(int FkIdUser)
+        {
+            List<Dictionary<string, object>> infoUser = GestionConnexion.Instance.getData("Select * from secretaire where FKIdUtilisateur=" + FkIdUser);
+            Secretaire retour = new Secretaire();
+            foreach (Dictionary<string, object> item in infoUser)
+            {
+                Utilisateur.getInfo(item["FKidUtilisateur"].ToString(), retour as Utilisateur);
+                retour.IdSecretaire =(int) item["idSecretaire"];
+                retour.Service = item["service"].ToString();
+            }
+            return retour;
+        }
+
         #endregion
     }
 }
