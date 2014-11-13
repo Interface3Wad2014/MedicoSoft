@@ -9,8 +9,7 @@ namespace MVCMedicoSoft.Areas.saveMe.Controllers
 {
     public class HomeController : Controller
     {
-        //
-        // GET: /saveMe/Home/
+                // GET: /saveMe/Home/
         public ActionResult Index()
         {
             return View();

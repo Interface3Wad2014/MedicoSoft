@@ -1,0 +1,51 @@
+﻿@model DAL.RendezVous
+
+@{
+    ViewBag.Title = "AddRdv";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddRdv</h2>
+
+<div>
+    <h4>RendezVous</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinRdv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinRdv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DebutRdv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DebutRdv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdRdv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdRdv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

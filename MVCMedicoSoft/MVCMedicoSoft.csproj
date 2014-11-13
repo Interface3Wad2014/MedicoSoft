@@ -124,6 +124,7 @@
     <Compile Include="Areas\Agenda\AgendaAreaRegistration.cs" />
     <Compile Include="Areas\Agenda\Controllers\HomeController.cs" />
     <Compile Include="Areas\Agenda\Models\BoiteMedecinEtPersonne.cs" />
+    <Compile Include="Areas\Agenda\Views\Home\CalendarController.cs" />
     <Compile Include="Areas\saveMe\Controllers\HomeController.cs" />
     <Compile Include="Areas\saveMe\saveMeAreaRegistration.cs" />
     <Compile Include="Controllers\GestUserController.cs" />
@@ -169,9 +170,9 @@
     <Content Include="Areas\Agenda\Views\Shared\_layoutAgenda.cshtml" />
     <Content Include="Areas\Agenda\Views\Shared\_ListPatient.cshtml" />
     <Content Include="Areas\Agenda\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Agenda\Views\Shared\_AddRdv.cshtml" />
     <Content Include="Areas\Agenda\Views\web.config" />
     <Content Include="Areas\Agenda\Views\Shared\_ListMedecin.cshtml" />
+    <Content Include="Areas\Agenda\Views\Calendar\AddRdv.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

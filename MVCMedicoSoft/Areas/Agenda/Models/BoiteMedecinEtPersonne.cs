@@ -10,7 +10,7 @@ namespace MVCMedicoSoft.Areas.Agenda.Models
     {
         List<Personne> _lstPers;
         List<Medecin> _lstMed;
-
+        
         public List<Medecin> LstMed
         {
             get { return _lstMed; }

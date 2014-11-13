@@ -5,7 +5,27 @@
 }
 
 <h2>Index</h2>
-@{
-    Html.RenderPartial("_ListPatient", Model.LstPers);
-    Html.RenderPartial("_ListMedecin", Model.LstMed);
-}
+
+    @{
+        Html.RenderPartial("_ListPatient", Model.LstPers);
+        Html.RenderPartial("_ListMedecin", Model.LstMed);
+    }
+<form method="post" action="~/Agenda/Calendar/AddRdv">
+   <input type="hidden" name="selPers" id="selPers" />
+    <input type="hidden" name="selMed" id="selMed" />
+    Date du Rendez-vous : <input type="date" name="txtDateRdv" />
+    <br />
+    Heure du Rendez-vous: <input type="time" name="txtHeureRdv" />
+    <br />
+    <input type="submit" value="Enregistrer" />
+</form>
+
+<script>
+    function setSelMed(r)
+    {
+        document.getElementById("selMed").value = r.value;
+    }
+    function setSelPers(r) {
+        document.getElementById("selPers").value = r.value;
+    }
+</script>

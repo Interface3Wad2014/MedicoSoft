@@ -5,6 +5,7 @@
                 Date naissance : <input type="date" name="dtNaiss" />
                 <button>Cherche!!! Bon chien.</button>
             </form>
+
         <table class="table">
             <tr>
 
@@ -52,9 +53,9 @@
             {
                 <tr>
                     <td>
-                        <input type="radio" 
-                        value="@Html.DisplayFor(modelItem=>item.NumRegNational)"
-                        name="rdPatientSel" />
+                        <input type="radio"
+                               value="@Html.DisplayFor(modelItem=>item.NumRegNational)"
+                               name="rdPatientSel" onclick="setSelPers(this)" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.NumRegNational)
