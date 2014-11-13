@@ -144,7 +144,7 @@ namespace DAL
             Secretaire retour = new Secretaire();
             foreach (Dictionary<string, object> item in infoUser)
             {
-                Utilisateur.getInfo(item["FKidUtilisateur"].ToString(), retour as Utilisateur);
+                Utilisateur.getInfoFromId((int)item["FKidUtilisateur"], retour as Utilisateur);
                 retour.IdSecretaire =(int) item["idSecretaire"];
                 retour.Service = item["service"].ToString();
             }

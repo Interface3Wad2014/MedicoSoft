@@ -4,6 +4,7 @@ using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
+using MVCMedicoSoft.Areas.Agenda.Models;
 using MVCMedicoSoft.Models;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,8 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
 
         //
         // GET: /Agenda/Calendar/
-        public ActionResult AddRdv(string selPers, long? selMed, string txtHeureRdv, string txtDateRdv)
+        [HttpPost]
+        public ActionResult AddRdv(string selPers, long? selMed, string txtHeureRdv, string txtDateRdv, string descr, string duree)
         {
             DateTime dt = DateTime.Parse(txtDateRdv);
             string[] tab = txtHeureRdv.Split(':');
@@ -53,8 +55,28 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
               dt=  dt.AddHours(double.Parse(tab[0]));
               dt=  dt.AddMinutes(double.Parse(tab[1]));
             }
-            RendezVous rdv = new RendezVous() { Medecin = Medecin.getInfo(selMed.ToString()), Secretaire = Secretaire.getInfoFromUser(MySession.User.IdUtilisateur), DebutRdv = dt };
-            return View(rdv);
+            DateTime dtfin = new DateTime();
+            //Calcul heure de fin
+            switch (duree)
+            {
+                case "15min": dtfin = dt.AddMinutes(15); break;
+                case "30min": dtfin = dt.AddMinutes(30); break;
+                default: dtfin = dt.AddHours(1);
+                    break;
+            }
+
+
+            RendezVous rdv = new RendezVous() 
+            { 
+                Medecin = Medecin.getInfo(selMed.ToString()), 
+                Secretaire = Secretaire.getInfoFromUser(MySession.User.IdUtilisateur), 
+                DebutRdv = dt,
+                Patient= Personne.getInfo(selPers),
+                Description=descr,
+                FinRdv = dtfin
+            };
+            RdvLocal rdvloc = new RdvLocal(rdv);
+            return View(rdvloc);
         }
 	}
 }
