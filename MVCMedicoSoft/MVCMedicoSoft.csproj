@@ -122,9 +122,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Agenda\AgendaAreaRegistration.cs" />
+    <Compile Include="Areas\Agenda\Controllers\CalendarController.cs" />
     <Compile Include="Areas\Agenda\Controllers\HomeController.cs" />
     <Compile Include="Areas\Agenda\Models\BoiteMedecinEtPersonne.cs" />
-    <Compile Include="Areas\Agenda\Views\Home\CalendarController.cs" />
     <Compile Include="Areas\saveMe\Controllers\HomeController.cs" />
     <Compile Include="Areas\saveMe\saveMeAreaRegistration.cs" />
     <Compile Include="Controllers\GestUserController.cs" />
