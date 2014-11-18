@@ -27,7 +27,7 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
             if (myGoogle.ConnectToGoogleAgenda())
             {
                 //Ajout d'un event
-                myGoogle.AddEventtoGoogleCalendar("Ajout from Medicosoft", "Medicosft Event", DateTime.Now, DateTime.Now.AddDays(1));
+               // myGoogle.AddEventtoGoogleCalendar("Ajout from Medicosoft", "Medicosft Event", DateTime.Now, DateTime.Now.AddDays(1));
                  e = myGoogle.getAllEvent(DateTime.Now.AddDays(-1), DateTime.Now.AddDays(10));
 
                // return Json(e, JsonRequestBehavior.AllowGet);
@@ -69,8 +69,16 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
                 Description=descr,
                 FinRdv = dtfin
             };
-            RdvLocal rdvloc = new RdvLocal(rdv);
-            return View(rdvloc);
+            /*RdvLocal rdvloc = new RdvLocal(rdv);
+            return View(rdvloc);*/
+            string Description =string.Format("Patient : {0} {1} Medecin :{2} {3}", rdv.Patient.Nom, rdv.Patient.Prenom, rdv.Medecin.Nom,rdv.Medecin.Prenom);
+            string subject ="Rendez vous médical";
+            GoogleV3 myGoogle = new GoogleV3(@"c:\client_secrets.json");
+            if (myGoogle.ConnectToGoogleAgenda())
+            {
+                myGoogle.AddEventtoGoogleCalendar(Description, subject, rdv.DebutRdv, rdv.FinRdv);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
