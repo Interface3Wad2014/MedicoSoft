@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MedicoSoft.Calendar
+namespace Medico.GoogleAgenda
 {
-    public class Class1
+    class Calendar
     {
     }
 }

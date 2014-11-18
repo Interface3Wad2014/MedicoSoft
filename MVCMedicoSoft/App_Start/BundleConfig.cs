@@ -24,6 +24,15 @@ namespace MVCMedicoSoft
                       "~/Content/bootstrap.css",
                       
                       "~/Content/site.css", "~/Content/bootstrap-theme.css"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                    "~/Scripts/jquery-1.10.2.js"));
+            bundles.Add(new ScriptBundle("~/bundles/moment").Include("~/Scripts/FullCalendar/moment.min.js"));
+             bundles.Add(new ScriptBundle("~/bundles/calendar").Include("~/Scripts/FullCalendar/fullcalendar.js"));
+            bundles.Add(new StyleBundle("~/Content/calendar").Include("~/Content/fullcalendar.css","~/Content/fullcalendar.print.css", "~/Content/bootstrapfullcalendar.css"));
+
+
         }
     }
 }

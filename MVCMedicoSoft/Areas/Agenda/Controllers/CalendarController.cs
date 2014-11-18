@@ -4,6 +4,7 @@ using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
+using MedicoSoft.Calendar;
 using MVCMedicoSoft.Areas.Agenda.Models;
 using MVCMedicoSoft.Infrastructure.helper;
 using MVCMedicoSoft.Models;
@@ -21,51 +22,19 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
     {
         public ActionResult Index()
         {
-
-            List<string> scopes = new List<string>();
-            CalendarService service;
-            scopes.Add(CalendarService.Scope.Calendar);
-
-            UserCredential credential ;
-            using  (FileStream stream = new FileStream(@"c:\Users\Mike\Documents\Visual Studio 2013\Projects\MVCMedicoSoft\MVCMedicoSoft\Content\client_secrets.json", FileMode.Open, FileAccess.Read))
+            List<MedicoEvent> e = new List<MedicoEvent>();
+            GoogleV3 myGoogle = new GoogleV3(@"c:\client_secrets.json");
+            if (myGoogle.ConnectToGoogleAgenda())
             {
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                        GoogleClientSecrets.Load(stream).Secrets, scopes, "user",
-                        CancellationToken.None,
-                        new FileDataStore("MvcMedicoSoft.Areas.Agenda")).Result;
+                //Ajout d'un event
+                myGoogle.AddEventtoGoogleCalendar("Ajout from Medicosoft", "Medicosft Event", DateTime.Now, DateTime.Now.AddDays(1));
+                 e = myGoogle.getAllEvent(DateTime.Now.AddDays(-1), DateTime.Now.AddDays(10));
+
+               // return Json(e, JsonRequestBehavior.AllowGet);
             }
-            var initializer =  new BaseClientService.Initializer();
-            initializer.HttpClientInitializer = credential;
-            initializer.ApplicationName = "MedicoSoftAgenda";
-            service = new CalendarService(initializer);
-            List<CalendarListEntry> list = service.CalendarList.List().Execute().Items.ToList();
-
-        
-            //Ajout d'un événement
-            Event e = new Event();
-            e.Description = "Ajout à partir de Medicosoft";
-            EventDateTime edt = new EventDateTime();
-            edt.DateTime =DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.ffK"));
-            EventDateTime edtf = new EventDateTime();
-            edtf.DateTime = DateTime.Parse(edt.DateTime.Value.AddHours(4).ToString("yyyy-MM-ddTHH:mm:ss.ffK"));
-            e.Start = edt;
-            e.End = edtf;
-            EventsResource evr = new EventsResource(service);
-
-            try
-            {
-                Event ereinsterted = service.Events.Insert(e, list[0].Id).Execute();
-               //List<Event> le =  service.Events.List(list[0].Id);
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
-
-
-
-            return View(list);
+            //return Json("Error", JsonRequestBehavior.AllowGet);
+                return View("Calendrier",e);
+            
         }
 
         //
@@ -103,5 +72,21 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
             RdvLocal rdvloc = new RdvLocal(rdv);
             return View(rdvloc);
         }
-	}
+
+        [HttpPost]
+        public ActionResult getAllEvents(DateTime start, DateTime end)
+        {
+             GoogleV3 myGoogle = new GoogleV3(@"c:\client_secrets.json");
+             if (myGoogle.ConnectToGoogleAgenda())
+             {
+                 //Ajout d'un event
+                 myGoogle.AddEventtoGoogleCalendar("Ajout from Medicosoft", "Medicosft Event", DateTime.Now, DateTime.Now.AddDays(1));
+                 List<MedicoEvent> e = myGoogle.getAllEvent(start, end);
+
+                 return Json(e, JsonRequestBehavior.AllowGet);
+             }
+             return Json("Error", JsonRequestBehavior.AllowGet);
+            
+        }
+    }
 }

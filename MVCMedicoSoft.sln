@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCMedicoSoft", "MVCMedicoS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{993DBD5B-2899-4BF6-91E5-AEBF23EC0EAA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicoSoft.Calendar", "MedicoSoft.Calendar\MedicoSoft.Calendar.csproj", "{2CA6BDCF-3554-47B7-AD27-55151AD9FFCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{993DBD5B-2899-4BF6-91E5-AEBF23EC0EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{993DBD5B-2899-4BF6-91E5-AEBF23EC0EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{993DBD5B-2899-4BF6-91E5-AEBF23EC0EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CA6BDCF-3554-47B7-AD27-55151AD9FFCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA6BDCF-3554-47B7-AD27-55151AD9FFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CA6BDCF-3554-47B7-AD27-55151AD9FFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CA6BDCF-3554-47B7-AD27-55151AD9FFCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

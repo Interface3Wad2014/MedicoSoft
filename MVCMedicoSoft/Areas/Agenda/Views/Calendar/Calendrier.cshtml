@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MedicoSoft.Calendar.MedicoEvent>
+<html>
+<head>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/calendar")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/calendar")
+    <script>
+        jQuery(document).ready(function () {
+
+            var date = new Date();
+            var d = date.getDate();
+            var m = date.getMonth();
+            var y = date.getFullYear();
+
+            var events_array = @Html.Raw(Json.Encode(Model))
+
+            jQuery('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                editable: true,
+                events: events_array
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                @Html.ActionLink("MedicoSoft", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+
+
+                @if (MVCMedicoSoft.Models.MySession.Login == null)
+                {
+                    <a href="/Login/Forms"
+                       class="btn btn-primary btnlogin">
+                        Connectez-Vous
+                    </a>
+                }
+                else
+                {
+                    <a href="/Login/LogOut"
+                       class="btn btn-primary btnlogin">
+                        Bienvenue @MVCMedicoSoft.Models.MySession.Login
+                    </a>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div id="calendar"></div>
+    </div>
+</body>
+</html>
