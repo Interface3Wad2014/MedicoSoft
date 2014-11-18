@@ -5,6 +5,7 @@ using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using MVCMedicoSoft.Areas.Agenda.Models;
+using MVCMedicoSoft.Infrastructure.helper;
 using MVCMedicoSoft.Models;
 using System;
 using System.Collections.Generic;
@@ -29,14 +30,38 @@ namespace MVCMedicoSoft.Areas.Agenda.Controllers
             using  (FileStream stream = new FileStream(@"c:\Users\Mike\Documents\Visual Studio 2013\Projects\MVCMedicoSoft\MVCMedicoSoft\Content\client_secrets.json", FileMode.Open, FileAccess.Read))
             {
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                        GoogleClientSecrets.Load(stream).Secrets, scopes, "user", CancellationToken.None,
-                        new FileDataStore("Calendar.VB.Sample")).Result;
+                        GoogleClientSecrets.Load(stream).Secrets, scopes, "user",
+                        CancellationToken.None,
+                        new FileDataStore("MvcMedicoSoft.Areas.Agenda")).Result;
             }
             var initializer =  new BaseClientService.Initializer();
             initializer.HttpClientInitializer = credential;
             initializer.ApplicationName = "MedicoSoftAgenda";
             service = new CalendarService(initializer);
             List<CalendarListEntry> list = service.CalendarList.List().Execute().Items.ToList();
+
+        
+            //Ajout d'un événement
+            Event e = new Event();
+            e.Description = "Ajout à partir de Medicosoft";
+            EventDateTime edt = new EventDateTime();
+            edt.DateTime =DateTime.Parse(DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss.ffK"));
+            EventDateTime edtf = new EventDateTime();
+            edtf.DateTime = DateTime.Parse(edt.DateTime.Value.AddHours(4).ToString("yyyy-MM-ddTHH:mm:ss.ffK"));
+            e.Start = edt;
+            e.End = edtf;
+            EventsResource evr = new EventsResource(service);
+
+            try
+            {
+                Event ereinsterted = service.Events.Insert(e, list[0].Id).Execute();
+               //List<Event> le =  service.Events.List(list[0].Id);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
 
 
 

@@ -175,6 +175,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\filters\CustomRoleProvider.cs" />
+    <Compile Include="Infrastructure\helper\RFC3339.cs" />
     <Compile Include="Models\MySession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
