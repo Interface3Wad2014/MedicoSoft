@@ -216,6 +216,7 @@
     <Content Include="Areas\Agenda\Views\Shared\_ListMedecin.cshtml" />
     <Content Include="Areas\Agenda\Views\Calendar\Index.cshtml" />
     <Content Include="Areas\Agenda\Views\Calendar\AddRdv.cshtml" />
+    <Content Include="Content\client_secrets.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
